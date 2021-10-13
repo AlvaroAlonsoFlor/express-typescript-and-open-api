@@ -1,8 +1,6 @@
-import express from "express";
+import ApiServer from './src/ApiServer'
+import mainApiRoutes from './src/routes/mainApiRoutes'
 
-const app = express();
-const PORT = 8080;
-app.get("/", (req, res) => res.send("Express + TypeScript Server"));
-app.listen(PORT, () => {
-  console.log(`[server]: Server is running at https://localhost:${PORT}`);
-});
+const mainApi = new ApiServer('main-api', 8080, '/api/v1', mainApiRoutes)
+
+mainApi.start()
